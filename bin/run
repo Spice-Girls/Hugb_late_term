@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sh ./bin/clean
+sh ./bin/compile
+sh ./bin/unit_test
+./gradlew run
+sh ./bin/package
