@@ -18,13 +18,14 @@ repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.12'
-
+    compile 'org.apache.commons:commons-lang3:3.3.2'
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
@@ -33,7 +34,18 @@ dependencies {
 }
 
 jar {
-    manifest {
-        attributes("Main-Class": "spice.tic_tac_toe.ttt")
-    }
+    from configurations.compile.collect { zipTree it }
+    manifest.attributes("Main-Class": "spice.tic_tac_toe.ttt")
+}
+
+sourceSets {
+    main.java.srcDir "src/main"
+    test.java.srcDir "src/test"
+}
+
+task runMainJar(type:Exec, dependsOn: jar) {
+    executable 'java'
+    args '-jar', "$jar.archivePath"
+    group 'Running jar files'
+    description 'Runs the executable jar file output from the main class ttt'
 }

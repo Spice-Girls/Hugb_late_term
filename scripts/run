@@ -3,5 +3,5 @@
 sh ./scripts/clean
 sh ./scripts/compile
 sh ./scripts/unit_test
-gradle run
+./gradlew run
 sh ./scripts/package
