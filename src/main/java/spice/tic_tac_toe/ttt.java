@@ -8,5 +8,12 @@ public class ttt {
         Random rand = new Random();
         int test = rand.nextInt();
         System.out.println(StringUtils.swapCase("Hello, world!") + test);
-    }
+	}
+	public int returnZero(){
+		return 0;
+	}
+	public int returnOne()
+	{
+		return 1;
+	}
 }
