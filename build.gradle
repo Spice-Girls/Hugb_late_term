@@ -33,6 +33,7 @@ jacocoTestReport {
         csv.enabled false
         html.destination "build/jacoco/reports/jacocoHtml"
     }
+description 'Runs jacoco for code coverage'
 }
 
 // In this section you declare the dependencies for your production and test code
