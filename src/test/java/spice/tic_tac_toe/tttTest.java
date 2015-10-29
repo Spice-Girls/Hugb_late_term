@@ -14,9 +14,4 @@ public class tttTest{
 		assertEquals(0, t.returnZero());
 	}
 	
-	@Test
-	public void testJacocoGradle() {
-		ttt t = new ttt();
-		assertEquals(1, t.returnOne());
-	}
 }
