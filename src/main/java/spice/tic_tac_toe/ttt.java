@@ -10,7 +10,8 @@ public class ttt {
         System.out.println(StringUtils.swapCase("Hello, world!") + test);
 	}
 	public int returnZero(){
-		return 0;
+		int zero = 0;
+		return zero;
 	}
 	public int returnOne()
 	{
