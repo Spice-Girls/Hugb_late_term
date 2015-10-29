@@ -31,6 +31,7 @@ jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
+		html.enabled true
         html.destination "build/jacoco/reports/jacocoHtml"
     }
 description 'Runs jacoco for code coverage'
@@ -68,3 +69,4 @@ task runMainJar(type:Exec, dependsOn: jar) {
 task stage {
     dependsOn installDist
 }
+check.dependsOn jacocoTestReport
