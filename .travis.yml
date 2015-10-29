@@ -9,4 +9,8 @@ addons:
 
 after_success:
   - "sshpass -p 'y.KWpMP5@4;]Cfd%' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
-  - "sshpass -p 'y.KWpMP5@4;]Cfd%' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports/jacocoHtml ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
+  - "sshpass -p 'y.KWpMP5@4;]Cfd%' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
+after_failure:
+  - "sshpass -p 'y.KWpMP5@4;]Cfd%' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
+  - "sshpass -p 'y.KWpMP5@4;]Cfd%' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
+  
