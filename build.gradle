@@ -64,3 +64,7 @@ task runMainJar(type:Exec, dependsOn: jar) {
     group 'Running jar files'
     description 'Runs the executable jar file output from the main class ttt'
 }
+
+task stage {
+    dependsOn installDist
+}
