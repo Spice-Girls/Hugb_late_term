@@ -13,7 +13,7 @@ apply plugin: 'application'
 apply plugin: "jacoco"
 apply plugin: 'pmd'
 
-mainClassName = "spice.tic_tac_toe.ttt"
+mainClassName = "spice.tic_tac_toe.Controller"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -46,6 +46,7 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+    compile 'com.sparkjava:spark-core:2.3'
 }
 
 jar {
