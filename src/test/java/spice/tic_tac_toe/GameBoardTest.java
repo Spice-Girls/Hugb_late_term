@@ -76,4 +76,17 @@ public class GameBoardTest {
         assertEquals('x', board.checkWin());
     }
 
+    @Test
+    public void testIsLegalMove() {
+
+            System.out.println("Testing IsLegalMove");
+            GameBoard board = new GameBoard();
+
+            // Set a winning condition
+            board.setMove(1, 'y');
+            board.setMove(2, 'y');
+            board.setMove(3, 'y');
+
+            assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);  
+    }
 }
