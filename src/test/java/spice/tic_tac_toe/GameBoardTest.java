@@ -76,6 +76,22 @@ public class GameBoardTest {
         assertEquals('x', board.checkWin());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testIsLegalMoveException() {
+
+            System.out.println("Testing IsLegalMove");
+            GameBoard board = new GameBoard();
+
+            // Set a winning condition
+            board.setMove(1, 'y');
+            board.setMove(2, 'y');
+            board.setMove(3, 'y');
+
+            board.isLegalMove(12415);
+            board.isLegalMove(10);
+            board.isLegalMove(0);
+    }
+
     @Test
     public void testIsLegalMove() {
 
@@ -87,6 +103,8 @@ public class GameBoardTest {
             board.setMove(2, 'y');
             board.setMove(3, 'y');
 
-            assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);  
+            assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);             assertEquals(board.isLegalMove(4), true);            assertEquals(board.isLegalMove(5), true);            assertEquals(board.isLegalMove(6), true);             assertEquals(board.isLegalMove(7), true);
+            assertEquals(board.isLegalMove(8), true);
+            assertEquals(board.isLegalMove(9), true);
     }
 }
