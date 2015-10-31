@@ -16,6 +16,31 @@ public class GameBoard {
         }
     }
 
+    public char checkWin() {
+        // Check Colum Win
+        for (int i = 0;i < 3; i++) {
+            if(board[i][2] != initChar && board[i][2] == board[i][1] && board[i][1] == board[i][0]) {
+                return board[i][2];
+            }
+        }
+
+        // Check Row Win
+        for (int i = 0;i < 3; i++) {
+            if(board[2][i] != initChar && board[2][i] == board[1][i] && board[1][i] == board[0][i]) {
+                return board[2][i];
+            }
+        }
+
+        // Check Cross Win
+        if(board[0][0] != initChar && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+            return board[1][1];
+        } else if(board[2][0] != initChar && board[2][0] == board[1][1] && board[1][1] == board[0][2]) {
+            return board[1][1];
+        }
+
+        throw new IllegalArgumentException("no Winner");
+    }
+
     public void setMove(int boxId, char player) {
             boxId -= 1;
             int x = boxId % 3;

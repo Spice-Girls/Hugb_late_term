@@ -30,4 +30,50 @@ public class GameBoardTest {
         assertEquals(ref, board.toString());
     }
 
+    // Testing exception throws for checkWin()
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCheckWinException() {
+        System.out.println("Testing CheckWin");
+        GameBoard board = new GameBoard();
+
+        // Lets get some no winner exceptions
+        board.checkWin();
+    }
+
+
+    // Testing proper Win Senario for checkWin()
+
+    @Test
+    public void testCheckWinRow() {
+        System.out.println("Testing CheckWin");
+        GameBoard board = new GameBoard();
+
+        // Set a winning condition
+        board.setMove(1, 'y');
+        board.setMove(2, 'y');
+        board.setMove(3, 'y');
+
+        assertEquals('y', board.checkWin());
+    }
+
+
+    // Testing proper Win Senario for checkWin()
+
+    @Test
+    public void testCheckWinColumn() {
+        System.out.println("Testing CheckWin");
+        GameBoard board = new GameBoard();
+
+        // Set a winning condition
+        board.setMove(1, 'x');
+        board.setMove(4, 'y');
+        board.setMove(7, 'y');
+        board.setMove(2, 'x');
+        board.setMove(5, 'x');
+        board.setMove(8, 'x');
+
+        assertEquals('x', board.checkWin());
+    }
+
 }
