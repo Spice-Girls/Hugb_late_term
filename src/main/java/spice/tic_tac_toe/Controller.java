@@ -31,10 +31,7 @@ public class Controller implements SparkApplication {
         Spark.staticFileLocation("/public"); 
         get("/", (req, res) -> "Hola Senorita");
         post("/makeMove", (req, res) -> {
-		JSONObject obj = new JSONObject();
-		obj.put("player", this.board.setMove(Integer.parseInt(req.queryParams("id"))));
-		
-		return obj;
+		return Character.toString(this.board.setMove(Integer.parseInt(req.queryParams("id"))));
 	});
         // post("/setName", (req, res) -> {
         //     chuck.alterName(

@@ -6,7 +6,7 @@
 			data: {'id': id},
 			success: function(response) {
 				console.log(response);
-				$(("#"+id)).append(response["player"]);
+				$(("#"+id)).append(response);
 			},
 			error: function(response) {
 				console.log("ERROR");
