@@ -82,3 +82,7 @@ task selenium(type: Test) {
        testClassesDir = sourceSets.selenium.output.classesDir
        classpath = sourceSets.selenium.runtimeClasspath
 }
+
+task stage {
+      dependsOn build
+}
