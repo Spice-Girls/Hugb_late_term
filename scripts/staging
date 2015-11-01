@@ -1,0 +1,8 @@
+#!/bin/bash
+
+heroku login
+heroku git:clone -a ./build/obscure-beyond-7452
+cd ./build/obscure-beyond-7452
+git add .
+git commit -am "updating staging server"
+git push heroku master
