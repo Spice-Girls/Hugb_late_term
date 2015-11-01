@@ -1,3 +1,20 @@
 language: java
+env:
+  global:
+    - secure: "BqWBKtQ4wx0Jp8JLYgQGQIAl+fLyBFKAvuBXhNwMxP8xpeDEGhnF1syHW2G5JzC5Om535u4ns4C7+YaBsjrbPK7mT/uVJQFm5rsDiqyZ4lEmqXLa4/iJaE39CrVwBB6Kw3iNsss75obMVzFRn0n6LbCg+dgf0b0ZOLMdg7me8zE7W3cSkuCjcUfmMWTC+lN59mFbGLgq34qLI4E7LNn7TrUbbhTp1I1hii8DFj4PhQHaXqJNkgNfvBwOV4TW68D9nnlRA0IWZZCGzWJpsiQcyKJJYO2Qa8GoaAsUAiee9sm8wSU69Ag5ca7p2O3TZAbQ/VPFTmp+dB/rzPoVrMyj3B4C963VyFoaVHAP+FJIhhAAHoX2WTgoUJxGaFVAHcoXbEYz58IYchJMVXG5sNIopMLuPi1aMCJ0KtCmIkX5qlnfvKu6yMg/m+A6sH5g2FJ2N28eN24lUJVIN0QnJL8MlprsA4uDSYAO3A185LyVejvW6aK6vY32pa9eYIX+IX7z5XcqojSo5HZRcCU55RwTBFDU3lH0kArAdXKjep5IMlgyrWz7tFtHl2MPGB1dGSohjqFVwSqZ2CLsN1jpokWJsON7obre8OxufuogYPfANermscGcyzXcr27EMRZTYeNXfNCQH/tFmi7zpoC/Ve/otIPGQI7JECG4MnuSyQUT3E0="
+
+sudo: false
 jdk:
   - oraclejdk8
+addons:
+  apt:
+    packages:
+      - sshpass
+
+after_success:
+  - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
+  - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
+after_failure:
+  - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
+  - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
+  
