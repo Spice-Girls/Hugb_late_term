@@ -7,9 +7,11 @@ import spark.servlet.SparkApplication;
 
 public class Controller implements SparkApplication {
 
-    private char[] board;
-    private char x;
-    private char y;
+    private GameBoard board;
+
+    public Controller() {
+        board = new GameBoard();
+    }
 
     public static void main(String[] args) {
         staticFileLocation("/public");
@@ -27,11 +29,7 @@ public class Controller implements SparkApplication {
 
     @Override
     public void init() {
-        board = new char[9];
-        x = 'X';
-        y = 'Y';
-
-
+        
         get("/", (req, res) -> "Hola Senorita");
         // post("/makeMove", (req, res) -> board.makeMove(req.queryParams("id")));
         // post("/setName", (req, res) -> {

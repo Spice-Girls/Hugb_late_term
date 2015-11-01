@@ -2,10 +2,30 @@ package spice.tic_tac_toe;
 
 public class GameBoard {
 
-    private char board[][];
-    private char initChar;
+    private char board[][];         // Board state
+    private char initChar;          // intialization Character (Board is filled with this char)
+    private boolean  player1Move;   // which players turn is it
+    private char player1;           //  Char representation for player 1
+    private char player2;           //  Char representation for player 2
 
     public GameBoard() {
+        player1 = 'X';
+        player2 = 'Y';
+        initChar = ' ';
+        board = new char[3][3];
+        initChar = ' ';
+
+        for (int i = 0;i < 3; i++) {
+            for (int j = 0;j < 3; j++) {
+                board[i][j] =  initChar;
+            }
+        }
+    }
+
+    public GameBoard(char p1, char p2, char initialChar) {
+        player1 = p1;
+        player2 = p2;
+        initChar = initialChar;
         board = new char[3][3];
         initChar = ' ';
 
@@ -41,20 +61,23 @@ public class GameBoard {
         throw new IllegalArgumentException("no Winner");
     }
 
-    public void setMove(int boxId, char player) {
+    public char setMove(int boxId) {
         boxId -= 1;
         int x = boxId % 3;
         int y = (boxId - (boxId % 3))/3;
 
-        if(boxId < 0 || boxId > 8) {
-            throw new IllegalArgumentException("boxId is not within the 1-9 range");
+        // isLegalMove will throw error if it doesnt return true
+        if(isLegalMove(boxId+1)) {
+            player1Move = !player1Move;
+            if(player1Move) {
+                board[x][y] = player1;
+                return player1;
+            } else {
+                board[x][y] = player2;
+                return player2;
+            }
         }
-
-        if(board[x][y] != initChar) {
-            throw new IllegalArgumentException("boxId refrences an already set box");
-        } else {
-            board[x][y] = player;
-        }
+        throw new IllegalArgumentException();
     }
 
     public boolean isLegalMove(int boxId) {
@@ -69,7 +92,7 @@ public class GameBoard {
             if(board[x][y] == initChar) {
                 return true;
             } else {
-                return false;
+                throw new IllegalArgumentException("boxId refrences an already set box");
             }
         }
     }
@@ -83,6 +106,7 @@ public class GameBoard {
         }
         return retString;
     }
+
 
 
 

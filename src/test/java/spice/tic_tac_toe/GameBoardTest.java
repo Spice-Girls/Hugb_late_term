@@ -13,16 +13,16 @@ public class GameBoardTest {
     }
 
     // Testing setMove()
-
+    /*
     @Test
     public void testSetMove() {
         System.out.println("Testing setMove");
         GameBoard board = new GameBoard();
 
         // Setting up the right conditions
-        board.setMove(1, 'x');
-        board.setMove(4, 'x');
-        board.setMove(7, 'x');
+        board.setMove(1);
+        board.setMove(4);
+        board.setMove(7);
 
         // Refrence String
         String ref = "x  x  x  ";
@@ -50,11 +50,14 @@ public class GameBoardTest {
         GameBoard board = new GameBoard();
 
         // Set a winning condition
-        board.setMove(1, 'y');
-        board.setMove(2, 'y');
-        board.setMove(3, 'y');
+        board.setMove(1);
+        board.setMove(8);
+        board.setMove(2);
+        board.setMove(9);
+        board.setMove(3);
+        board.setMove(4);
 
-        assertEquals('y', board.checkWin());
+        assertEquals('x', board.checkWin());
     }
 
 
@@ -66,12 +69,12 @@ public class GameBoardTest {
         GameBoard board = new GameBoard();
 
         // Set a winning condition
-        board.setMove(1, 'x');
-        board.setMove(4, 'y');
-        board.setMove(7, 'y');
-        board.setMove(2, 'x');
-        board.setMove(5, 'x');
-        board.setMove(8, 'x');
+        board.setMove(1);
+        board.setMove(4);
+        board.setMove(7);
+        board.setMove(2);
+        board.setMove(5);
+        board.setMove(8);
 
         assertEquals('x', board.checkWin());
     }
@@ -83,9 +86,9 @@ public class GameBoardTest {
             GameBoard board = new GameBoard();
 
             // Set a winning condition
-            board.setMove(1, 'y');
-            board.setMove(2, 'y');
-            board.setMove(3, 'y');
+            board.setMove(1);
+            board.setMove(2);
+            board.setMove(3);
 
             board.isLegalMove(12415);
             board.isLegalMove(10);
@@ -99,12 +102,12 @@ public class GameBoardTest {
             GameBoard board = new GameBoard();
 
             // Set a winning condition
-            board.setMove(1, 'y');
-            board.setMove(2, 'y');
-            board.setMove(3, 'y');
+            board.setMove(1);
+            board.setMove(2);
+            board.setMove(3);
 
             assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);             assertEquals(board.isLegalMove(4), true);            assertEquals(board.isLegalMove(5), true);            assertEquals(board.isLegalMove(6), true);             assertEquals(board.isLegalMove(7), true);
             assertEquals(board.isLegalMove(8), true);
             assertEquals(board.isLegalMove(9), true);
-    }
+    }*/
 }
