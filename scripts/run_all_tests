@@ -5,7 +5,6 @@ sh ./scripts/compile
 sh ./scripts/unit_test
 sh ./scripts/jacoco_test
 sh ./scripts/check
-./gradlew run
 sh ./scripts/package
 sh ./scripts/staging
 sh ./scripts/selenium
