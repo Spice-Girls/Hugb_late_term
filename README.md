@@ -10,6 +10,7 @@ Each team should implement the game TicTacToe. The main focus is on the
 infrastructure and best coding practices described below but not on
 implemented features.
 
+
 The project and infrastructure should tackle the following:
 
   1. The code base is stored in source control system on GitHub from early
