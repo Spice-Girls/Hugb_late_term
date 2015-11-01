@@ -6,11 +6,15 @@ import org.junit.Test;
 
 public class AITest {
 
+	
+	//name is random
 	@Test
 	public void testGetName() {
-		String name = "computerSaysNo";
+		/*String name = "computerSaysNo";
 		AI a = new AI('X');
-		assertEquals(name, a.getName());
+		assertEquals(name, a.getName());*/
+		AI a = new AI('X');
+		assert(!a.getName().isEmpty());
 	}
 	
 	@Test
