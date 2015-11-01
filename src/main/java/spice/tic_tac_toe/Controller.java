@@ -4,6 +4,7 @@ import spark.*;
 import static spark.Spark.*;
 import spark.servlet.SparkApplication;
 
+import org.json.simple.JSONObject;
 
 public class Controller implements SparkApplication {
 
@@ -17,9 +18,7 @@ public class Controller implements SparkApplication {
         staticFileLocation("/public");
         SparkApplication controller = new Controller();
 
-        //String port = System.getenv("PORT");
-        String port = "9090";
-        System.out.println(port);
+        String port = System.getenv("PORT");
         if (port != null) {
             port(Integer.valueOf(port));
         }
@@ -29,9 +28,14 @@ public class Controller implements SparkApplication {
 
     @Override
     public void init() {
-        
+        Spark.staticFileLocation("/public"); 
         get("/", (req, res) -> "Hola Senorita");
-        // post("/makeMove", (req, res) -> board.makeMove(req.queryParams("id")));
+        post("/makeMove", (req, res) -> {
+		JSONObject obj = new JSONObject();
+		obj.put("player", this.board.setMove(Integer.parseInt(req.queryParams("id"))));
+		
+		return obj;
+	});
         // post("/setName", (req, res) -> {
         //     chuck.alterName(
         //         req.queryParams("firstName"),

@@ -3,14 +3,13 @@
 		$.ajax({
 			url: "makeMove",
 			type: 'POST',
-			data: id,
+			data: {'id': id},
 			success: function(response) {
 				console.log(response);
-				if(id.legal) {
-					$(("#"+id)).text = id.player;
-				}
+				$(("#"+id)).append(response["player"]);
 			},
 			error: function(response) {
+				console.log("ERROR");
 				console.log(response);
 			}
 		});
