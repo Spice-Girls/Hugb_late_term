@@ -84,5 +84,7 @@ task selenium(type: Test) {
 }
 
 task stage {
-      dependsOn build
+      dependsOn installDist
 }
+
+
