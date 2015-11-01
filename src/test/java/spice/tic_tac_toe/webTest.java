@@ -38,10 +38,10 @@ public class webTest {
             driver.close();
         }
 
-    @Before
+/*    @Before
         public void setup() {
             ;
-        }
+        }*/
 
     @After
         public void tearDown() {
