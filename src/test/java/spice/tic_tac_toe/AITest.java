@@ -1,16 +1,15 @@
 package spice.tic_tac_toe;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class AITest {
-
+	
+	//name is random
 	@Test
 	public void testGetName() {
-		String name = "computerSaysNo";
 		AI a = new AI('X');
-		assertEquals(name, a.getName());
+		assert(!a.getName().isEmpty());
 	}
 	
 	@Test
@@ -22,5 +21,5 @@ public class AITest {
 			t.setMove(i, a.getMark());
 		}
 	}
-
 }
+
