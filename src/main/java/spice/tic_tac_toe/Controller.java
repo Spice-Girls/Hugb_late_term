@@ -16,7 +16,7 @@ public class Controller implements SparkApplication {
         SparkApplication controller = new Controller();
 
         //String port = System.getenv("PORT");
-        String port = "9090";
+        String port = "80";
         System.out.println(port);
         if (port != null) {
             port(Integer.valueOf(port));
