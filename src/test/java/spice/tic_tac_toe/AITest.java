@@ -1,4 +1,4 @@
-package spice.tic_tac_toe;
+/*package spice.tic_tac_toe;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -22,4 +22,4 @@ public class AITest {
 		}
 	}
 }
-
+*/
