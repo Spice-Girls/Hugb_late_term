@@ -4,6 +4,7 @@ import spark.*;
 import static spark.Spark.*;
 import spark.servlet.SparkApplication;
 
+
 import org.json.simple.JSONObject;
 
 public class Controller implements SparkApplication {
@@ -28,11 +29,13 @@ public class Controller implements SparkApplication {
 
     @Override
     public void init() {
-        Spark.staticFileLocation("/public"); 
+        Spark.staticFileLocation("/public");
+
         get("/", (req, res) -> "Hola Senorita");
-        post("/makeMove", (req, res) -> {
-		return Character.toString(this.board.setMove(Integer.parseInt(req.queryParams("id"))));
-	});
+
+        post("/MakeMove", (req, res) -> {
+            return "";
+    	});
         // post("/setName", (req, res) -> {
         //     chuck.alterName(
         //         req.queryParams("firstName"),
