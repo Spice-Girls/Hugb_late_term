@@ -52,7 +52,7 @@ dependencies {
 
 jar {
     from configurations.compile.collect { zipTree it }
-    manifest.attributes("Main-Class": "spice.tic_tac_toe.ttt")
+    manifest.attributes("Main-Class": "spice.tic_tac_toe.Controller")
 }
 
 sourceSets {
