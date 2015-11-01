@@ -15,9 +15,7 @@ public class Controller implements SparkApplication {
         staticFileLocation("/public");
         SparkApplication controller = new Controller();
 
-        //String port = System.getenv("PORT");
-        String port = "80";
-        System.out.println(port);
+        String port = System.getenv("PORT");
         if (port != null) {
             port(Integer.valueOf(port));
         }
