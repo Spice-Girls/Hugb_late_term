@@ -9,7 +9,7 @@ public class AITest {
 	@Test
 	public void testGetName() {
 		AI a = new AI('X');
-		assert(!a.getName().isEmpty());
+		assert !a.getName().isEmpty();
 	}
 	
 	@Test
