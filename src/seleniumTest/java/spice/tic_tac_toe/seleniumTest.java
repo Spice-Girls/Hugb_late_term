@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 
 
 
-public class webTest {
+public class seleniumTest {
     static WebDriver driver;
     static String baseUrl;
     static String port;
@@ -51,6 +51,6 @@ public class webTest {
         public void assertTitle() {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             driver.get(baseUrl + "/index.html");
-            assertEquals("Error 404", driver.getTitle());
+            assertEquals("Error 304", driver.getTitle());
         }
 }

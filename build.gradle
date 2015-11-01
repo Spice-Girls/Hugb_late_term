@@ -38,8 +38,8 @@ jacocoTestReport {
 }
 sourceSets {
     main.java.srcDir "src/main"
-        test.java.srcDir "src/test"
-        selenium
+    test.java.srcDir "src/test"
+    selenium.java.srcDir "src/seleniumTest"
         seleniumXvfb
 }
 
@@ -55,12 +55,13 @@ dependencies {
         testCompile 'junit:junit:4.12'
         compile 'com.sparkjava:spark-core:2.3'
             
-        testCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
-        testCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
-        testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
-        testCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
-        testCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
-        testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+        seleniumCompile 'junit:junit:4.12'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+        seleniumCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
 
 }
 
@@ -75,4 +76,9 @@ task runMainJar(type:Exec, dependsOn: jar) {
         args '-jar', "$jar.archivePath"
         group 'Running jar files'
         description 'Runs the executable jar file output from the main class ttt'
+}
+
+task selenium(type: Test) {
+       testClassesDir = sourceSets.selenium.output.classesDir
+       classpath = sourceSets.selenium.runtimeClasspath
 }
