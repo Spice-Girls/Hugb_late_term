@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Spice-Girls/Hugb_late_term.svg?branch=master)](https://travis-ci.org/Spice-Girls/Hugb_late_term)
+
 # Hugb_late_term
 # Purpose
 Learn to set up technical infrastructure to support agile development. The main
