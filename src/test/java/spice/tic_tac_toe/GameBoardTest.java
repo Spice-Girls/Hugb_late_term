@@ -13,7 +13,7 @@ public class GameBoardTest {
     }
 
     // Testing setMove()
-    /*
+    
     @Test
     public void testSetMove() {
         System.out.println("Testing setMove");
@@ -25,7 +25,7 @@ public class GameBoardTest {
         board.setMove(7);
 
         // Refrence String
-        String ref = "x  x  x  ";
+        String ref = "x  y  x  ";
 
         assertEquals(ref, board.toString());
     }
@@ -63,7 +63,7 @@ public class GameBoardTest {
 
     // Testing proper Win Senario for checkWin()
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testCheckWinColumn() {
         System.out.println("Testing CheckWin");
         GameBoard board = new GameBoard();
@@ -95,7 +95,7 @@ public class GameBoardTest {
             board.isLegalMove(0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testIsLegalMove() {
 
             System.out.println("Testing IsLegalMove");
@@ -109,5 +109,5 @@ public class GameBoardTest {
             assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);             assertEquals(board.isLegalMove(4), true);            assertEquals(board.isLegalMove(5), true);            assertEquals(board.isLegalMove(6), true);             assertEquals(board.isLegalMove(7), true);
             assertEquals(board.isLegalMove(8), true);
             assertEquals(board.isLegalMove(9), true);
-    }*/
+    }
 }

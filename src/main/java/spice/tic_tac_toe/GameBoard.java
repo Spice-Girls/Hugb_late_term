@@ -9,8 +9,8 @@ public class GameBoard {
     private char player2;           //  Char representation for player 2
 
     public GameBoard() {
-        player1 = 'X';
-        player2 = 'Y';
+        player1 = 'x';
+        player2 = 'y';
         initChar = ' ';
         board = new char[3][3];
         initChar = ' ';
