@@ -35,7 +35,7 @@ public class Controller implements SparkApplication {
     public void init() {
         Spark.staticFileLocation("/public");
 
-        get("/", (req, res) -> "Hola Senorita");
+        get("/", (req, res) -> "<script>document.location = 'index.html';</script>");
 
         post("/MakeMove", (req, res) -> {
             Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true);
