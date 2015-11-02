@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sh ./scripts/clean
+sh ./scripts/compile
+sh ./scripts/unit_test
+./gradlew jacocoTestReport
+./gradlew check
+./gradlew run
+sh ./scripts/package
