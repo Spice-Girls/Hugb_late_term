@@ -10,10 +10,9 @@ public class GameBoard {
 
     public GameBoard() {
         player1 = 'x';
-        player2 = 'y';
+        player2 = 'o';
         initChar = ' ';
         board = new char[3][3];
-        initChar = ' ';
 
         for (int i = 0;i < 3; i++) {
             for (int j = 0;j < 3; j++) {
@@ -58,7 +57,7 @@ public class GameBoard {
             return board[1][1];
         }
 
-        throw new IllegalArgumentException("no Winner");
+        return 'n';
     }
 
     public char setMove(int boxId) {
@@ -77,7 +76,7 @@ public class GameBoard {
                 return player2;
             }
         }
-        throw new IllegalArgumentException();
+        return board[x][y];
     }
 
     public boolean isLegalMove(int boxId) {
@@ -92,7 +91,7 @@ public class GameBoard {
             if(board[x][y] == initChar) {
                 return true;
             } else {
-                throw new IllegalArgumentException("boxId refrences an already set box");
+                return false;
             }
         }
     }

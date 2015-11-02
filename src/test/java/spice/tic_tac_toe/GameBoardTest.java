@@ -32,7 +32,7 @@ public class GameBoardTest {
 
     // Testing exception throws for checkWin()
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCheckWinException() {
         System.out.println("Testing CheckWin");
         GameBoard board = new GameBoard();
@@ -63,17 +63,17 @@ public class GameBoardTest {
 
     // Testing proper Win Senario for checkWin()
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCheckWinColumn() {
         System.out.println("Testing CheckWin");
         GameBoard board = new GameBoard();
 
         // Set a winning condition
         board.setMove(1);
-        board.setMove(4);
+        board.setMove(6);
         board.setMove(7);
         board.setMove(2);
-        board.setMove(5);
+        board.setMove(4);
         board.setMove(8);
 
         assertEquals('x', board.checkWin());
@@ -95,7 +95,7 @@ public class GameBoardTest {
             board.isLegalMove(0);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testIsLegalMove() {
 
             System.out.println("Testing IsLegalMove");

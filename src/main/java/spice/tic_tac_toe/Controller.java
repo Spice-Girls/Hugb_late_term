@@ -38,8 +38,15 @@ public class Controller implements SparkApplication {
         get("/", (req, res) -> "<script>document.location = 'index.html';</script>");
 
         post("/MakeMove", (req, res) -> {
-            Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true);
-            board.setMove(res.queryParams("boxId"));
+            int query = Integer.parseInt(req.queryParams("id"));
+            char player = board.setMove(query);
+            boolean legal = board.isLegalMove(query);
+            String winner = Character.toString(board.checkWin());
+            boolean win = false;
+            if (winner != "n") {
+                win = true;
+            }
+            Response jsonResponse = new Response(win, player, winner, legal);
             return gson.toJson(jsonResponse);
     	});
 
