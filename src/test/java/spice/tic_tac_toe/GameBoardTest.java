@@ -25,7 +25,7 @@ public class GameBoardTest {
         board.setMove(7);
 
         // Refrence String
-        String ref = "x  y  x  ";
+        String ref = "x  o  x  ";
 
         assertEquals(ref, board.toString());
     }
