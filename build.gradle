@@ -86,7 +86,7 @@ task runMainJar(type:Exec, dependsOn: jar) {
         description 'Runs the executable jar file output from the main class ttt'
 }
 
-task seleniumXvfb(type: Test, dependsOn: installDist) {
+task seleniumXvfb(type: Test, dependsOn: installApp) {
     testClassesDir = sourceSets.selenium.output.classesDir
     classpath = sourceSets.selenium.runtimeClasspath
     environment "DISPLAY", ":99"
