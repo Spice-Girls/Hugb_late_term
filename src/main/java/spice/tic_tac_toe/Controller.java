@@ -4,6 +4,7 @@ import spark.*;
 import static spark.Spark.*;
 import spark.servlet.SparkApplication;
 
+import com.google.gson.Gson;
 
 import org.json.simple.JSONObject;
 
@@ -11,7 +12,10 @@ public class Controller implements SparkApplication {
 
     private GameBoard board;
 
+    private Gson gson;
+
     public Controller() {
+        gson = new Gson();
         board = new GameBoard();
     }
 
@@ -34,21 +38,28 @@ public class Controller implements SparkApplication {
         get("/", (req, res) -> "Hola Senorita");
 
         post("/MakeMove", (req, res) -> {
-            return "";
+            Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true);
+            return gson.toJson(jsonResponse);
+            //= board.HumanMove(res.queryParams("boxId"));
     	});
-        // post("/setName", (req, res) -> {
-        //     chuck.alterName(
-        //         req.queryParams("firstName"),
-        //         req.queryParams("lastName")
-        //     );
-        //     res.status(200);
-        //     return res;
-        // });
-        // get("/resetName", (req, res) -> {
-        //     chuck.resetName();
-        //     res.status(200);
-        //     return res;
-        // });
+
+        post("/GetState", (req, res) -> {
+            char a[][] = {{'1','2','3'},{'4','5','6'}};
+            //char a[][] = board.GetState();
+            return gson.toJson(a);
+        });
+
+        post("/Restart", (req, res) -> {
+            boolean worked = true;
+            //worked = board.Reset();
+            return gson.toJson(worked);
+        });
+
+        post("/AiMove", (req, res) -> {
+            Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true, true, 2);
+            return gson.toJson(jsonResponse);
+        });
+
     }
 
 }
