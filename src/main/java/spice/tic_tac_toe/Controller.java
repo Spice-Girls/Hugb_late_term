@@ -16,7 +16,7 @@ public class Controller implements SparkApplication {
 
     public Controller() {
         gson = new Gson();
-        board = new GameBoard();
+        board = new GameBoard("Tester1","Tester2");
     }
 
     public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class Controller implements SparkApplication {
         });
 
         post("/Restart", (req, res) -> {
-            board = new GameBoard();
+            board = new GameBoard("Tester1","Tester2");
             return gson.toJson(true);
         });
 

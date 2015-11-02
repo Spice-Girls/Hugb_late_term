@@ -17,7 +17,7 @@ public class GameBoardTest {
     @Test
     public void testSetMove() {
         System.out.println("Testing setMove");
-        GameBoard board = new GameBoard();
+        GameBoard board = new GameBoard("Tester1", "Tester2");
 
         // Setting up the right conditions
         board.setMove(1);
@@ -35,7 +35,7 @@ public class GameBoardTest {
     @Test
     public void testCheckWinException() {
         System.out.println("Testing CheckWin");
-        GameBoard board = new GameBoard();
+        GameBoard board = new GameBoard("Tester1", "Tester2");
 
         // Lets get some no winner exceptions
         board.checkWin();
@@ -47,7 +47,7 @@ public class GameBoardTest {
     @Test
     public void testCheckWinRow() {
         System.out.println("Testing CheckWin");
-        GameBoard board = new GameBoard();
+        GameBoard board = new GameBoard("Tester1", "Tester2");
 
         // Set a winning condition
         board.setMove(1);
@@ -66,7 +66,7 @@ public class GameBoardTest {
     @Test
     public void testCheckWinColumn() {
         System.out.println("Testing CheckWin");
-        GameBoard board = new GameBoard();
+        GameBoard board = new GameBoard("Tester1", "Tester2");
 
         // Set a winning condition
         board.setMove(1);
@@ -83,7 +83,7 @@ public class GameBoardTest {
     public void testIsLegalMoveException() {
 
             System.out.println("Testing IsLegalMove");
-            GameBoard board = new GameBoard();
+            GameBoard board = new GameBoard("Tester1", "Tester2");
 
             // Set a winning condition
             board.setMove(1);
@@ -99,7 +99,7 @@ public class GameBoardTest {
     public void testIsLegalMove() {
 
             System.out.println("Testing IsLegalMove");
-            GameBoard board = new GameBoard();
+            GameBoard board = new GameBoard("Tester1", "Tester2");
 
             // Set a winning condition
             board.setMove(1);

@@ -5,10 +5,13 @@ public class GameBoard {
     private char board[][];         // Board state
     private char initChar;          // intialization Character (Board is filled with this char)
     private boolean  player1Move;   // which players turn is it
-    private char player1;           //  Char representation for player 1
-    private char player2;           //  Char representation for player 2
+    //private char player1;           //  Char representation for player 1
+    //private char player2;
+    private Human p1;
+    private Human p2;
+    private AI a1;           //  Char representation for player 2
 
-    public GameBoard() {
+    /*public GameBoard() {
         player1 = 'x';
         player2 = 'o';
         initChar = ' ';
@@ -19,14 +22,25 @@ public class GameBoard {
                 board[i][j] =  initChar;
             }
         }
-    }
+    }*/
 
-    public GameBoard(char p1, char p2, char initialChar) {
-        player1 = p1;
-        player2 = p2;
-        initChar = initialChar;
-        board = new char[3][3];
+    public GameBoard(String name){
+        p1 = new Human(name,'x');
+        a1 = new AI('o');
         initChar = ' ';
+        board = new char[3][3];
+        for (int i = 0;i < 3; i++) {
+            for (int j = 0;j < 3; j++) {
+                board[i][j] =  initChar;
+            }
+        }
+    }
+    
+    public GameBoard(String name, String name2){
+        p1 = new Human(name,'x');
+        p2 = new Human(name,'o');
+        initChar = ' ';
+        board = new char[3][3];
 
         for (int i = 0;i < 3; i++) {
             for (int j = 0;j < 3; j++) {
@@ -69,13 +83,18 @@ public class GameBoard {
         if(isLegalMove(boxId+1)) {
             player1Move = !player1Move;
             if(player1Move) {
-                board[x][y] = player1;
-                return player1;
+                board[x][y] = p1.getMark();
+                return p1.getMark();
             } else {
-                board[x][y] = player2;
-                return player2;
+                if(p2 == null){
+                    board[x][y] = p1.getMark();
+                    return p1.getMark();
+                }else{
+                     board[x][y] = p2.getMark();
+                     return p2.getMark();
+                    }
+                }
             }
-        }
         return board[x][y];
     }
 
