@@ -39,8 +39,8 @@ public class Controller implements SparkApplication {
 
         post("/MakeMove", (req, res) -> {
             Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true);
+            board.setMove(res.queryParams("boxId"));
             return gson.toJson(jsonResponse);
-            //= board.HumanMove(res.queryParams("boxId"));
     	});
 
         post("/GetState", (req, res) -> {
