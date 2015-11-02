@@ -40,7 +40,10 @@ public class Controller implements SparkApplication {
         post("/MakeMove", (req, res) -> {
             int query = Integer.parseInt(req.queryParams("id"));
             char player = board.setMove(query);
-            String winner = Character.toString(board.checkWin());
+            String winner = "n";
+            if(board.checkWin() != null){
+                winner = board.checkWin().getName();
+            }
             Response jsonResponse = new Response(player, winner);
             return gson.toJson(jsonResponse);
     	});

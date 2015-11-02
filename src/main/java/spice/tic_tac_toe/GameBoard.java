@@ -5,24 +5,10 @@ public class GameBoard {
     private char board[][];         // Board state
     private char initChar;          // intialization Character (Board is filled with this char)
     private boolean  player1Move;   // which players turn is it
-    //private char player1;           //  Char representation for player 1
-    //private char player2;
     private Human p1;
     private Human p2;
-    private AI a1;           //  Char representation for player 2
+    private AI a1;          
 
-    /*public GameBoard() {
-        player1 = 'x';
-        player2 = 'o';
-        initChar = ' ';
-        board = new char[3][3];
-
-        for (int i = 0;i < 3; i++) {
-            for (int j = 0;j < 3; j++) {
-                board[i][j] =  initChar;
-            }
-        }
-    }*/
 
     public GameBoard(String name){
         p1 = new Human(name,'x');
@@ -38,7 +24,7 @@ public class GameBoard {
     
     public GameBoard(String name, String name2){
         p1 = new Human(name,'x');
-        p2 = new Human(name,'o');
+        p2 = new Human(name2,'o');
         initChar = ' ';
         board = new char[3][3];
 
@@ -49,29 +35,45 @@ public class GameBoard {
         }
     }
 
-    public char checkWin() {
+public Player checkWin() {
         // Check Colum Win
         for (int i = 0;i < 3; i++) {
             if(board[i][2] != initChar && board[i][2] == board[i][1] && board[i][1] == board[i][0]) {
-                return board[i][2];
+                if(board[i][2] == 'x') return p1;
+                else{
+                    if(p2 == null) return a1;
+                    else return p2;
+                }
             }
         }
 
         // Check Row Win
         for (int i = 0;i < 3; i++) {
             if(board[2][i] != initChar && board[2][i] == board[1][i] && board[1][i] == board[0][i]) {
-                return board[2][i];
+                if(board[2][i] == 'x') return p1;
+                else{
+                    if(p2 == null) return a1;
+                    else return p2;
+                }
             }
         }
 
         // Check Cross Win
         if(board[0][0] != initChar && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-            return board[1][1];
+            if(board[1][1] == 'x') return p1;
+            else{
+                if(p2 == null) return a1;
+                else return p2;
+            }
         } else if(board[2][0] != initChar && board[2][0] == board[1][1] && board[1][1] == board[0][2]) {
-            return board[1][1];
+            if(board[1][1] == 'x') return p1;
+            else{
+                if(p2 == null) return a1;
+                else return p2;
+            }
         }
 
-        return 'n';
+        return null;
     }
 
     public char setMove(int boxId) {
@@ -124,9 +126,4 @@ public class GameBoard {
         }
         return retString;
     }
-
-
-
-
-
 }

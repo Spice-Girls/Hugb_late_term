@@ -57,7 +57,7 @@ public class GameBoardTest {
         board.setMove(3);
         board.setMove(4);
 
-        assertEquals('x', board.checkWin());
+        assertEquals('x', board.checkWin().getMark());
     }
 
 
@@ -70,13 +70,13 @@ public class GameBoardTest {
 
         // Set a winning condition
         board.setMove(1);
-        board.setMove(6);
+        board.setMove(5);
         board.setMove(7);
         board.setMove(2);
         board.setMove(4);
         board.setMove(8);
 
-        assertEquals('x', board.checkWin());
+        assertEquals('x', board.checkWin().getMark());
     }
 
     @Test(expected = IllegalArgumentException.class)
