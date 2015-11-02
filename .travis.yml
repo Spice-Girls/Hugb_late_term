@@ -10,6 +10,17 @@ addons:
   apt:
     packages:
       - sshpass
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 10
+before_install:
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+after_install:
+  - "./build/install/Hugb_late_term/bin/Hugb_late_term"
+
+script:
+  - ./gradlew seleniumXvfb
 
 after_success:
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"

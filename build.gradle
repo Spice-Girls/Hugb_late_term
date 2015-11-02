@@ -20,7 +20,7 @@ repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
-    mavenCentral()
+        mavenCentral()
 }
 
 jacoco {
@@ -34,13 +34,36 @@ jacocoTestReport {
 		html.enabled true
         html.destination "build/jacoco/reports/jacocoHtml"
     }
-description 'Runs jacoco for code coverage'
+    description 'Runs jacoco for code coverage'
+}
+sourceSets {
+    main.java.srcDir "src/main"
+    test.java.srcDir "src/test"
+    selenium.java.srcDir "src/seleniumTest"
+    seleniumXvfb.java.srcDir "src/seleniumTest"
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.12'
+            
+    seleniumCompile 'junit:junit:4.12'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+
+    seleniumXvfbCompile 'junit:junit:4.12'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+
     compile 'org.apache.commons:commons-lang3:3.3.2'
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
@@ -48,6 +71,8 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
     compile 'com.sparkjava:spark-core:2.3'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+    compile 'com.google.code.gson:gson:2.4'
 }
 
 jar {
@@ -55,19 +80,26 @@ jar {
     manifest.attributes("Main-Class": "spice.tic_tac_toe.Controller")
 }
 
-sourceSets {
-    main.java.srcDir "src/main"
-    test.java.srcDir "src/test"
-}
 
 task runMainJar(type:Exec, dependsOn: jar) {
     executable 'java'
-    args '-jar', "$jar.archivePath"
-    group 'Running jar files'
-    description 'Runs the executable jar file output from the main class ttt'
+        args '-jar', "$jar.archivePath"
+        group 'Running jar files'
+        description 'Runs the executable jar file output from the main class ttt'
+}
+task seleniumXvfb(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
+    environment "DISPLAY", ":99"
+    doFirst {
+        'build/install/Hugb_late_term/bin/Hugb_late_term &'.execute()
+    }
+    doLast {
+        'sh -e /etc/init.d/xvfb stop'.execute()
+    }
 }
 
 task stage {
-    dependsOn installDist
+      dependsOn installDist
 }
-check.dependsOn jacocoTestReport
+
