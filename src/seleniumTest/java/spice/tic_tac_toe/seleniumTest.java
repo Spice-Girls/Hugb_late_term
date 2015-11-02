@@ -20,15 +20,10 @@ import org.openqa.selenium.WebElement;
 public class seleniumTest {
     static WebDriver driver;
     static String baseUrl;
-    static String port;
 
     @BeforeClass
         public static void before() {
             driver = new FirefoxDriver();
-            port = System.getenv("PORT");
-            if(port == null) {
-                port = "9090";
-            }
             baseUrl = "https://obscure-beyond-7452.herokuapp.com";
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
@@ -51,6 +46,6 @@ public class seleniumTest {
         public void assertTitle() {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             driver.get(baseUrl + "/index.html");
-            assertEquals("Starter Template for Bootstap", driver.getTitle());
+            assertEquals("Starter Template 44444444444444444444444444444444444444444444 Bootstap", driver.getTitle());
         }
 }
