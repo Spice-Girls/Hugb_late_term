@@ -51,6 +51,6 @@ public class seleniumTest {
         public void assertTitle() {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             driver.get(baseUrl + "/index.html");
-            assertEquals("Starter Template for Bootstap", driver.getTitle());
+            assertEquals("Starter Template for Bootstrap", driver.getTitle());
         }
 }
