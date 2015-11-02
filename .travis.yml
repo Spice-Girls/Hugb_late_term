@@ -19,7 +19,7 @@ before_install:
 after_install:
   - "./build/install/Hugb_late_term/bin/Hugb_late_term"
 
-after_script:
+script:
   - ./gradlew seleniumXvfb
 
 after_success:
