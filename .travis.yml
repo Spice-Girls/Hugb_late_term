@@ -19,6 +19,7 @@ before_install:
 after_install:
   - "./build/install/Hugb_late_term/bin/Hugb_late_term"
 after_success:
+  - ./gradlew seleniumXvfb
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
 after_failure:
