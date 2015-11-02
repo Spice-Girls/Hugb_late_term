@@ -4,6 +4,7 @@
 			type: 'POST',
 			//data: {'id': id},
 			success: function(response) {
+				response = JSON.parse(response);
 				if(response) {
 				   location.reload();
 				}
@@ -21,7 +22,13 @@
 			data: {'id': id},
 			success: function(response) {
 				console.log(response);
-				$(("#"+id)).append(response);
+				response = JSON.parse(response);
+				if(response.success) {
+					if(response.winner) {
+						alert(response.name);
+					}
+					$(("#"+id)).text(response.player);
+				}
 			},
 			error: function(response) {
 				console.log("ERROR");
