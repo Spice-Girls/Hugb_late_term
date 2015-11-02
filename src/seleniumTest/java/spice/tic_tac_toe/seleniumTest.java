@@ -24,7 +24,11 @@ public class seleniumTest {
     @BeforeClass
         public static void before() {
             driver = new FirefoxDriver();
-            baseUrl = "https://obscure-beyond-7452.herokuapp.com";
+			port = System.getenv("PORT");
+			if(port == null) {
+				port = "4567"
+			}
+            baseUrl = "http://localhost:" + port;
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
 
