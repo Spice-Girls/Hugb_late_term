@@ -50,9 +50,8 @@ public class Controller implements SparkApplication {
         });
 
         post("/Restart", (req, res) -> {
-            boolean worked = true;
-            //worked = board.Reset();
-            return gson.toJson(worked);
+            board = new GameBoard();
+            return gson.toJson(true);
         });
 
         post("/AiMove", (req, res) -> {
