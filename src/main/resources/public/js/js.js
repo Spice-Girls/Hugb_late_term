@@ -23,12 +23,13 @@
 			success: function(response) {
 				console.log(response);
 				response = JSON.parse(response);
-				if(response.success) {
-					if(response.winner) {
+					if(response.name != "n") {
+						$(("#"+id)).text(response.player);
 						alert(response.name);
+						resetBoard();
+					}else{
+						$(("#"+id)).text(response.player);
 					}
-					$(("#"+id)).text(response.player);
-				}
 			},
 			error: function(response) {
 				console.log("ERROR");

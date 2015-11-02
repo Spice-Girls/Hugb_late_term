@@ -40,13 +40,8 @@ public class Controller implements SparkApplication {
         post("/MakeMove", (req, res) -> {
             int query = Integer.parseInt(req.queryParams("id"));
             char player = board.setMove(query);
-            boolean legal = board.isLegalMove(query);
             String winner = Character.toString(board.checkWin());
-            boolean win = false;
-            if (winner != "n") {
-                win = true;
-            }
-            Response jsonResponse = new Response(win, player, winner, legal);
+            Response jsonResponse = new Response(player, winner);
             return gson.toJson(jsonResponse);
     	});
 
@@ -62,7 +57,7 @@ public class Controller implements SparkApplication {
         });
 
         post("/AiMove", (req, res) -> {
-            Response jsonResponse = new Response(true, 'x', "Sveinbjorn", true, true, 2);
+            Response jsonResponse = new Response('x', "Sveinbjorn", true, 2);
             return gson.toJson(jsonResponse);
         });
 
