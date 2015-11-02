@@ -4,13 +4,19 @@ import spark.*;
 import static spark.Spark.*;
 import spark.servlet.SparkApplication;
 
+import com.google.gson.Gson;
+
+import org.json.simple.JSONObject;
 
 public class Controller implements SparkApplication {
 
     private GameBoard board;
 
+    private Gson gson;
+
     public Controller() {
-        board = new GameBoard();
+        gson = new Gson();
+        board = new GameBoard("Tester1","Tester2");
     }
 
     public static void main(String[] args) {
@@ -27,22 +33,37 @@ public class Controller implements SparkApplication {
 
     @Override
     public void init() {
-        
-        get("/", (req, res) -> "Hola Senorita");
-        // post("/makeMove", (req, res) -> board.makeMove(req.queryParams("id")));
-        // post("/setName", (req, res) -> {
-        //     chuck.alterName(
-        //         req.queryParams("firstName"),
-        //         req.queryParams("lastName")
-        //     );
-        //     res.status(200);
-        //     return res;
-        // });
-        // get("/resetName", (req, res) -> {
-        //     chuck.resetName();
-        //     res.status(200);
-        //     return res;
-        // });
+        Spark.staticFileLocation("/public");
+
+        get("/", (req, res) -> "<script>document.location = 'index.html';</script>");
+
+        post("/MakeMove", (req, res) -> {
+            int query = Integer.parseInt(req.queryParams("id"));
+            char player = board.setMove(query);
+            String winner = "n";
+            if(board.checkWin() != null){
+                winner = board.checkWin().getName();
+            }
+            Response jsonResponse = new Response(player, winner);
+            return gson.toJson(jsonResponse);
+    	});
+
+        post("/GetState", (req, res) -> {
+            char a[][] = {{'1','2','3'},{'4','5','6'}};
+            //char a[][] = board.GetState();
+            return gson.toJson(a);
+        });
+
+        post("/Restart", (req, res) -> {
+            board = new GameBoard("Tester1","Tester2");
+            return gson.toJson(true);
+        });
+
+        post("/AiMove", (req, res) -> {
+            Response jsonResponse = new Response('x', "Sveinbjorn", true, 2);
+            return gson.toJson(jsonResponse);
+        });
+
     }
 
 }
