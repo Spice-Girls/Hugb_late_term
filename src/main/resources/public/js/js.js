@@ -1,7 +1,7 @@
 
 	function sendClick(id) {
 		$.ajax({
-			url: "makeMove",
+			url: "MakeMove",
 			type: 'POST',
 			data: {'id': id},
 			success: function(response) {
