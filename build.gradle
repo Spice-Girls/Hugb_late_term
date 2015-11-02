@@ -90,7 +90,6 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
     classpath = sourceSets.selenium.runtimeClasspath
     environment "DISPLAY", ":99"
     doFirst {
-        'bin/xvfb start'.execute()
         'build/install/Hugb_late_term/bin/Hugb_late_term &'.execute()
     }
     doLast {
