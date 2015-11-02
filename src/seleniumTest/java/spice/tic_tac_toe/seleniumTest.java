@@ -20,6 +20,7 @@ import org.openqa.selenium.WebElement;
 public class seleniumTest {
     static WebDriver driver;
     static String baseUrl;
+	static String port;
 
     @BeforeClass
         public static void before() {
