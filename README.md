@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Spice-Girls/Hugb_late_term.svg?branch=master)](https://travis-ci.org/Spice-Girls/Hugb_late_term)
+
 # Hugb_late_term
 # Purpose
 Learn to set up technical infrastructure to support agile development. The main
@@ -7,6 +9,7 @@ class, into a coherent infrastructure.
 Each team should implement the game TicTacToe. The main focus is on the
 infrastructure and best coding practices described below but not on
 implemented features.
+
 
 The project and infrastructure should tackle the following:
 
