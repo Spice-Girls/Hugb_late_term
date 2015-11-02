@@ -1,5 +1,6 @@
 package spice.tic_tac_toe;
 
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -109,5 +110,13 @@ public class GameBoardTest {
             assertEquals(board.isLegalMove(1), false);            assertEquals(board.isLegalMove(2), false);            assertEquals(board.isLegalMove(3), false);             assertEquals(board.isLegalMove(4), true);            assertEquals(board.isLegalMove(5), true);            assertEquals(board.isLegalMove(6), true);             assertEquals(board.isLegalMove(7), true);
             assertEquals(board.isLegalMove(8), true);
             assertEquals(board.isLegalMove(9), true);
+    }
+
+    @Test
+    public void testGetPlayerNames() {
+        GameBoard board = new GameBoard("Tester1", "Tester2");
+        ArrayList<String> list =(ArrayList<String>) board.getPlayerNames();
+        assertEquals(list.get(0),"Tester1");
+        assertEquals(list.get(1),"Tester2");
     }
 }

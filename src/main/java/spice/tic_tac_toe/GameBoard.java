@@ -1,5 +1,7 @@
 package spice.tic_tac_toe;
 
+import java.util.ArrayList;
+
 public class GameBoard {
 
     private char board[][];         // Board state
@@ -100,6 +102,10 @@ public Player checkWin() {
         return board[x][y];
     }
 
+    public int getAIMove(){
+        return a1.getMove(this);
+    }
+
     public boolean isLegalMove(int boxId) {
         boxId = boxId - 1;
 
@@ -125,5 +131,17 @@ public Player checkWin() {
             retString += board[x][y];
         }
         return retString;
+    }
+
+    public Iterable<String> getPlayerNames(){
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(p1.getName());
+        if(p2 == null) list.add(a1.getName());
+        else list.add(p2.getName());
+        return list;
+    }
+
+    public char[][] getBoard() {
+        return board;
     }
 }
