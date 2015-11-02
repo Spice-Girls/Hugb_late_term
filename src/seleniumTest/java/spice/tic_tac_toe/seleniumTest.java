@@ -51,6 +51,6 @@ public class seleniumTest {
         public void assertTitle() {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             driver.get(baseUrl + "/index.html");
-            assertEquals("Starter Template 44444444444444444444444444444444444444444444 Bootstap", driver.getTitle());
+            assertEquals("Myllumaster 3000", driver.getTitle());
         }
 }
