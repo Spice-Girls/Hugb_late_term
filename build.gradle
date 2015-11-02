@@ -40,7 +40,7 @@ sourceSets {
     main.java.srcDir "src/main"
     test.java.srcDir "src/test"
     selenium.java.srcDir "src/seleniumTest"
-        seleniumXvfb
+    seleniumXvfb.java.srcDir "src/seleniumTest"
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -83,8 +83,20 @@ task selenium(type: Test) {
        classpath = sourceSets.selenium.runtimeClasspath
 }
 
+task seleniumXvfb(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
+    environment "DISPLAY", ":99"
+    doFirst {
+        'bin/xvfb start'.execute()
+        './build/install/Hugb_late_term/bin/Hugb_late_term'.execute()
+    }
+    doLast {
+        'sh -e /etc/init.d/xvfb stop'.execute()
+    }
+}
+
 task stage {
       dependsOn installDist
 }
-
 
