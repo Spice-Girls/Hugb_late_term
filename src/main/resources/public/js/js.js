@@ -21,7 +21,6 @@
 			type: 'POST',
 			data: {'id': id},
 			success: function(response) {
-				console.log(response);
 				response = JSON.parse(response);
 					if(response.name != "n") {
 						$(("#"+id)).text(response.player);
