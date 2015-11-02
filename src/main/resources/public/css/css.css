@@ -12,3 +12,10 @@
 	padding: 80px;
 }
 
+#player1 {
+	float: left;
+}
+
+#player2 {
+	float: right;
+}
