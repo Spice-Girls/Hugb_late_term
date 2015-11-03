@@ -56,6 +56,7 @@ public class seleniumTest {
 		public void assertXFirstMove() {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.id("1")).click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			String x = driver.findElement(By.id("1")).getText();
 			assertEquals("X", x);
 		}
