@@ -23,10 +23,12 @@ script:
   - ./gradlew seleniumXvfb
 
 after_success:
+  - ./gradlew check
   - ./gradlew jacocoTestReport
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
 after_failure:
+  - ./gradlew check
   - ./gradlew jacocoTestReport
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/reports/"
   - "sshpass -p $SJOMLVAR scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q -r build/jacoco/reports ubuntu@82.221.50.35:/usr/share/nginx/html/logs/jacoco/"
