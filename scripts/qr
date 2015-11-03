@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sh ./scripts/clean
+sh ./scripts/compile
+./gradlew run
