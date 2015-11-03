@@ -3,5 +3,4 @@
 sh ./scripts/clean
 sh ./scripts/compile
 sh ./scripts/package
-sh ./scripts/staging
 sh ./scripts/selenium
