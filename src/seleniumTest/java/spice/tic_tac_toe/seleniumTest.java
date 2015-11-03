@@ -14,7 +14,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.Alert;
 
 
 public class seleniumTest {
@@ -88,10 +87,8 @@ public class seleniumTest {
 			driver.findElement(By.id("4")).click();
 			driver.findElement(By.id("5")).click();
 			driver.findElement(By.id("7")).click();			
-			Alert a1 = driver.switchTo().alert();
-			String winner = a1.getText();
-			a1.accept();
-			assertEquals("Tester1", winner);
+            String winner = driver.findElement(By.id("messageBox")).getText();
+			assertEquals("Tester1 Just Won", winner);
 		}
 
 }

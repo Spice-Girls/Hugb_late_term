@@ -19,3 +19,8 @@
 #player2 {
 	float: right;
 }
+
+#messageBox {
+	font-size: 20px;
+	color: red;
+}
