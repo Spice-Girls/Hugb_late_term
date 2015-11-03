@@ -88,7 +88,6 @@ public class seleniumTest {
 			driver.findElement(By.id("4")).click();
 			driver.findElement(By.id("5")).click();
 			driver.findElement(By.id("7")).click();			
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			Alert a1 = driver.switchTo().alert();
 			String winner = a1.getText();
 			a1.accept();
