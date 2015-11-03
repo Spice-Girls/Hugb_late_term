@@ -3,7 +3,7 @@
 sh ./scripts/clean
 sh ./scripts/compile
 sh ./scripts/unit_test
-./gradlew jacocoTestReport
-./gradlew check
+sh ./scripts/jacoco_test
+sh ./scripts/check
 ./gradlew run
 sh ./scripts/package
