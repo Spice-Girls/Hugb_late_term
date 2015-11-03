@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.Alert;
 
 
 public class seleniumTest {
@@ -30,7 +30,7 @@ public class seleniumTest {
 				port = "4567";
 			}
             baseUrl = "http://localhost:" + port;
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
 
     @AfterClass
@@ -38,19 +38,56 @@ public class seleniumTest {
             driver.close();
         }
 
-/*    @Before
+	@Before
         public void setup() {
-            ;
-        }*/
+            driver.get(baseUrl + "/index.html");
+
+        }
 
     @After
         public void tearDown() {
-            driver.get(baseUrl + "/");
         }
     @Test
         public void assertTitle() {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.get(baseUrl + "/index.html");
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             assertEquals("Myllumaster 3000", driver.getTitle());
         }
+	@Test
+		public void assertXFirstMove() {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.findElement(By.id("1")).click();
+			String x = driver.findElement(By.id("1")).getText();
+			assertEquals("X", x);
+		}
+	@Test
+		public void assertReset() {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.findElement(By.id("reset")).click();
+			String empt = driver.findElement(By.id("1")).getText();
+			assertEquals("", empt);
+		}
+	@Test
+		public void assertXO() {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.findElement(By.id("1")).click();
+			String x = driver.findElement(By.id("1")).getText();
+			assertEquals("X", x);
+			driver.findElement(By.id("2")).click();
+			String o = driver.findElement(By.id("2")).getText();
+			assertEquals("O", o);
+		}
+	@Test
+		public void assertWinX() {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.findElement(By.id("1")).click();
+			driver.findElement(By.id("2")).click();
+			driver.findElement(By.id("4")).click();
+			driver.findElement(By.id("5")).click();
+			driver.findElement(By.id("7")).click();			
+			Alert a1 = driver.switchTo().alert();
+			String winner = a1.getText();
+			a1.accept();
+			assertEquals("Tester1", winner);
+		}
+
 }

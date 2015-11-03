@@ -98,7 +98,24 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
         'sh -e /etc/init.d/xvfb stop'.execute()
     }
 }
+task selenium(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
 
+    ant.condition(property: "os", value: "windows") { os(family: "Windows") }
+    ant.condition(property: "os", value: "unix") { os(family: "unix") }
+
+    doFirst {
+        switch(ant.properties.os) {
+        case 'unix':
+                'build/install/Hugb_late_term/bin/Hugb_late_term &'.execute()
+             break
+            case 'windows':
+            'build\\install\\Hugb_late_term\\bin\\Hugb_late_term.bat'.execute()
+        break
+    }
+    }
+}
 task stage {
       dependsOn installDist
 }
