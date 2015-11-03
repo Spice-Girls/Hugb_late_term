@@ -19,16 +19,11 @@ import org.openqa.selenium.WebElement;
 public class seleniumTest {
     static WebDriver driver;
     static String baseUrl;
-	static String port;
 
     @BeforeClass
         public static void before() {
             driver = new FirefoxDriver();
-			port = System.getenv("PORT");
-			if(port == null) {
-				port = "4567";
-			}
-            baseUrl = "http://localhost:" + port;
+            baseUrl = "https://obscure-beyond-7452.herokuapp.com/index.html";
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
 
@@ -39,7 +34,7 @@ public class seleniumTest {
 
 	@Before
         public void setup() {
-            driver.get(baseUrl + "/index.html");
+            driver.get(baseUrl);
 
         }
 

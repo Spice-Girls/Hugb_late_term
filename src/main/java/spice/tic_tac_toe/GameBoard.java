@@ -9,7 +9,7 @@ public class GameBoard {
     private boolean  player1Move;   // which players turn is it
     private Human p1;
     private Human p2;
-    private AI a1;          
+    private AI a1;
 
 
     public GameBoard(String name){
@@ -23,7 +23,7 @@ public class GameBoard {
             }
         }
     }
-    
+
     public GameBoard(String name, String name2){
         p1 = new Human(name,'x');
         p2 = new Human(name2,'o');
@@ -37,7 +37,7 @@ public class GameBoard {
         }
     }
 
-public Player checkWin() {
+    public Player checkWin() {
         // Check Colum Win
         for (int i = 0;i < 3; i++) {
             if(board[i][2] != initChar && board[i][2] == board[i][1] && board[i][1] == board[i][0]) {
