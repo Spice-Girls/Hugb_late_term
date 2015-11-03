@@ -16,7 +16,7 @@ public class Controller implements SparkApplication {
 
     public Controller() {
         gson = new Gson();
-        board = new GameBoard("Tester1","Tester2");
+        board = new GameBoard("Player 1","Player 2");
     }
 
     public static void main(String[] args) {
@@ -35,7 +35,10 @@ public class Controller implements SparkApplication {
     public void init() {
         Spark.staticFileLocation("/public");
 
-        get("/", (req, res) -> "<script>document.location = 'index.html';</script>");
+        get("/", (req, res) -> {
+            board = new GameBoard("Player 1","Player 2");
+            return "<script>document.location = 'index.html';</script>";
+        });
 
         post("/MakeMove", (req, res) -> {
             int query = Integer.parseInt(req.queryParams("id"));
@@ -47,12 +50,6 @@ public class Controller implements SparkApplication {
             Response jsonResponse = new Response(player, winner);
             return gson.toJson(jsonResponse);
     	});
-
-        post("/GetState", (req, res) -> {
-            char a[][] = {{'1','2','3'},{'4','5','6'}};
-            //char a[][] = board.GetState();
-            return gson.toJson(a);
-        });
 
         post("/Restart", (req, res) -> {
             board = new GameBoard("Tester1","Tester2");

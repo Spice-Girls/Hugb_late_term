@@ -41,6 +41,7 @@ sourceSets {
     test.java.srcDir "src/test"
     selenium.java.srcDir "src/seleniumTest"
     seleniumXvfb.java.srcDir "src/seleniumTest"
+    seleniumHeroku.java.srcDir "src/seleniumHerokuTest"
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -63,6 +64,14 @@ dependencies {
     seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
     seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
     seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+
+    seleniumHerokuCompile 'junit:junit:4.12'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+    seleniumHerokuCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
 
     compile 'org.apache.commons:commons-lang3:3.3.2'
     // Declare the dependency for your favourite test framework you want to use in your tests.
@@ -120,3 +129,23 @@ task stage {
       dependsOn installDist
 }
 
+task seleniumHeroku(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.seleniumHeroku.output.classesDir
+    classpath = sourceSets.seleniumHeroku.runtimeClasspath
+
+    ant.condition(property: "os", value: "windows") { os(family: "Windows") }
+    ant.condition(property: "os", value: "unix") { os(family: "unix") }
+
+    doFirst {
+        switch(ant.properties.os) {
+        case 'unix':
+                'build/install/Hugb_late_term/bin/Hugb_late_term &'.execute()
+             break
+            case 'windows':
+            'build\\install\\Hugb_late_term\\bin\\Hugb_late_term.bat'.execute()
+        break
+    }
+    }
+}
+
+check.dependsOn jacocoTestReport

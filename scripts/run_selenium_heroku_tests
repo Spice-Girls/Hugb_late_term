@@ -3,4 +3,4 @@
 sh ./scripts/clean
 sh ./scripts/compile
 sh ./scripts/package
-sh ./scripts/selenium
+sh ./scripts/selenium_heroku
