@@ -36,6 +36,7 @@
 		$.ajax({
 			url: "MakeMove",
 			type: 'POST',
+            async: false,
 			data: {'id': id},
 			success: function(response) {
 				response = JSON.parse(response);
