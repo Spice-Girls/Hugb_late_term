@@ -64,6 +64,7 @@ public class seleniumTest {
 		public void assertReset() {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.id("reset")).click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			String empt = driver.findElement(By.id("1")).getText();
 			assertEquals("", empt);
 		}
@@ -71,9 +72,11 @@ public class seleniumTest {
 		public void assertXO() {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.id("1")).click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			String x = driver.findElement(By.id("1")).getText();
 			assertEquals("X", x);
 			driver.findElement(By.id("2")).click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			String o = driver.findElement(By.id("2")).getText();
 			assertEquals("O", o);
 		}
@@ -85,6 +88,7 @@ public class seleniumTest {
 			driver.findElement(By.id("4")).click();
 			driver.findElement(By.id("5")).click();
 			driver.findElement(By.id("7")).click();			
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			Alert a1 = driver.switchTo().alert();
 			String winner = a1.getText();
 			a1.accept();
